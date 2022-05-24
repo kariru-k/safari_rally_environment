@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "160981874245",
+    "project_id": "safari-rally-environment",
+    "storage_bucket": "safari-rally-environment.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:160981874245:android:0767baf4dce78d25ced52c",
+        "android_client_info": {
+          "package_name": "com.example.safari_rally"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "160981874245-vvceorgm04lkmtedvlrf30ft4i0ijtmm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.safari_rally",
+            "certificate_hash": "36b1258121002ae6e16e65aab9406ea5e5eb4aad"
+          }
+        },
+        {
+          "client_id": "160981874245-apvu4nko914odhv3gt99f9ocphl7vt1r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAJsUXER1R4oljM2frc85Z6nqteYhhBNKg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "160981874245-apvu4nko914odhv3gt99f9ocphl7vt1r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
