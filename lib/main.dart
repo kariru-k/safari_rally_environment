@@ -2,16 +2,17 @@
 import 'package:firebase_core/firebase_core.dart';
 
 import 'package:flutter/material.dart';
+import 'auth/secrets.dart';
 import 'screens/login_screen.dart';
 
 Future<void> main() async{
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
-    options: const FirebaseOptions(
-      apiKey: "AIzaSyAJsUXER1R4oljM2frc85Z6nqteYhhBNKg",
-      appId: "1:160981874245:android:0767baf4dce78d25ced52c",
-      messagingSenderId: "160981874245",
-      projectId: "safari-rally-environment",
+    options:  FirebaseOptions(
+      apiKey: apikey,
+      appId: appID,
+      messagingSenderId: messagingID,
+      projectId: projectID,
     ),
   );
   runApp(MaterialApp(
