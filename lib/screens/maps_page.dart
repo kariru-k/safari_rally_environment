@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-
+import 'package:safari_rally/models/locations.dart';
+import 'package:safari_rally/screens/map_details_screen.dart';
 class MapsPage extends StatelessWidget {
   const MapsPage({Key? key}) : super(key: key);
 
@@ -11,6 +12,24 @@ class MapsPage extends StatelessWidget {
         centerTitle: true,
         backgroundColor: Colors.blue,
       ),
+      body: ListView.builder(
+        itemCount: locations.length,
+        itemBuilder: (context, index)
+          {
+            Locations location = locations[index];
+            return Card(
+              child: ListTile(
+                title: Text(location.title),
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(
+                      builder: (context) => MapDetailsScreen(location))
+                  );
+                },
+              ),
+            );
+          }
+      )
     );
   }
 }
