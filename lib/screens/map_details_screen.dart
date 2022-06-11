@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:location/location.dart';
 
 import '../models/locations.dart';
 
@@ -7,6 +8,9 @@ class MapDetailsScreen extends StatelessWidget {
   final Locations location;
 
   MapDetailsScreen(this.location);
+
+  late GoogleMapController _controller;
+  Location _location = Location();
 
   late final startPos = LatLng(location.startLat, location.startLng);
   late final checkPoint1Pos = LatLng(location.checkpoint1Lat, location.checkpoint1Lng);
@@ -55,6 +59,7 @@ class MapDetailsScreen extends StatelessWidget {
   );
 
 
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -71,6 +76,7 @@ class MapDetailsScreen extends StatelessWidget {
           _checkPoint3
         },
         initialCameraPosition: _initialCameraPosition,
+        myLocationEnabled: true,
       ),
     );
   }
