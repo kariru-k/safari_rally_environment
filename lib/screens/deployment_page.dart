@@ -7,7 +7,7 @@ class DeploymentConfirmationPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Deployment Confirmation'),
+        title: const Text('Deployment Form(Suppliers)'),
         centerTitle: true,
         backgroundColor: Colors.blue,
       ),

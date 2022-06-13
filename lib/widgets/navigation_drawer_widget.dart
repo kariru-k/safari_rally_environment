@@ -2,7 +2,6 @@
 
 
 import 'package:flutter/material.dart';
-
 import '../screens/deployment_page.dart';
 import '../screens/litter_marking.dart';
 import '../screens/maps_page.dart';
@@ -11,82 +10,99 @@ import '../screens/reports.dart';
 import '../screens/schedule_page.dart';
 
 
-class NavigationDrawerWidget extends StatelessWidget {
-  final paddding = const EdgeInsets.symmetric(horizontal: 20);
+class NavigationDrawerWidget extends StatefulWidget {
+  const NavigationDrawerWidget({Key? key}) : super(key: key);
+
   @override
+  State<NavigationDrawerWidget> createState() => _NavigationDrawerWidgetState();
+}
 
-
-
+class _NavigationDrawerWidgetState extends State<NavigationDrawerWidget> {
+  @override
   Widget build(BuildContext context) {
     return Drawer(
-      child: Material(
-        color: Colors.blue,
-        child: ListView(
-          children: <Widget>[
-            const SizedBox(height: 10),
-            buildMenuItem(
-              text: 'Rally Schedule',
-              icon: Icons.schedule,
-              onClicked: () =>selectedItem(context, 0),
-            ),
+        child: Material(
+          color: Colors.blue,
+          child: ListView(
+            children: <Widget>[
+              const SizedBox(height: 10),
+              buildMenuItem(
+                text: 'Rally Schedule',
+                icon: Icons.schedule,
+                onClicked: () =>selectedItem(context, 0),
+              ),
 
-            const SizedBox(height: 24),
-            const Divider(color: Colors.white),
+              const SizedBox(height: 24),
+              const Divider(color: Colors.white),
 
-            const SizedBox(height: 10),
-            buildMenuItem(
-              text: 'Stage Maps',
-              icon: Icons.map,
-              onClicked: () =>selectedItem(context, 1),
-            ),
+              const SizedBox(height: 10),
+              buildMenuItem(
+                text: 'Stage Maps',
+                icon: Icons.map,
+                onClicked: () =>selectedItem(context, 1),
+              ),
 
-            const SizedBox(height: 10),
-            buildMenuItem(
-              text: 'Mark litter areas',
-              icon: Icons.recycling,
-              onClicked: () =>selectedItem(context, 2),
-            ),
+              const SizedBox(height: 10),
+              buildMenuItem(
+                text: 'Mark litter areas',
+                icon: Icons.recycling,
+                onClicked: () =>selectedItem(context, 2),
+              ),
 
-            const SizedBox(height: 24),
-            const Divider(color: Colors.white),
+              const SizedBox(height: 24),
+              const Divider(color: Colors.white),
 
-            const SizedBox(height: 10),
-            buildMenuItem(
-              text: 'Deployment Confirmation',
-              icon: Icons.category,
-              onClicked: () =>selectedItem(context, 3),
-            ),
+              const SizedBox(height: 10),
+              buildMenuItem(
+                text: 'Supplier Deployment Form',
+                icon: Icons.category,
+                onClicked: () =>selectedItem(context, 3),
+              ),
 
-            const SizedBox(height: 10),
-            buildMenuItem(
-              text: 'Noise Test Form',
-              icon: Icons.graphic_eq,
-              onClicked: () =>selectedItem(context, 4),
-            ),
+              const SizedBox(height: 10),
+              buildMenuItem(
+                text: 'Marshall Resource Confirmation Form',
+                icon: Icons.category,
+                onClicked: () =>selectedItem(context, 4),
+              ),
 
-            const SizedBox(height: 24),
-            const Divider(color: Colors.white),
+              const SizedBox(height: 10),
+              buildMenuItem(
+                text: 'Marshal Stage Review Form',
+                icon: Icons.category,
+                onClicked: () =>selectedItem(context, 5),
+              ),
 
-            const SizedBox(height: 10),
-            buildMenuItem(
-              text: 'Reports',
-              icon: Icons.summarize,
-              onClicked: () =>selectedItem(context, 5),
-            ),
+              const SizedBox(height: 10),
+              buildMenuItem(
+                text: 'Noise Test Form',
+                icon: Icons.graphic_eq,
+                onClicked: () =>selectedItem(context, 6),
+              ),
+
+              const SizedBox(height: 24),
+              const Divider(color: Colors.white),
+
+              const SizedBox(height: 10),
+              buildMenuItem(
+                text: 'Reports',
+                icon: Icons.summarize,
+                onClicked: () =>selectedItem(context, 7),
+              ),
 
 
 
 
-          ],
-        ),
-      )
+            ],
+          ),
+        )
     );
   }
 
   Widget buildMenuItem({
-     required String text,
-     required IconData icon,
-     VoidCallback? onClicked,
+    required String text,
+    required IconData icon,
+    VoidCallback? onClicked,
   }) {
     const color = Colors.white;
     const hoverColor = Colors.white70;
@@ -104,7 +120,7 @@ class NavigationDrawerWidget extends StatelessWidget {
     switch (index) {
       case 0:
         Navigator.of(context).push(MaterialPageRoute(
-            builder: (context) => const SchedulePage(),
+          builder: (context) => const SchedulePage(),
         ));
         break;
       case 1:
@@ -122,12 +138,12 @@ class NavigationDrawerWidget extends StatelessWidget {
           builder: (context) => const DeploymentConfirmationPage(),
         ));
         break;
-      case 4:
+      case 6:
         Navigator.of(context).push(MaterialPageRoute(
           builder: (context) => const NoisePage(),
         ));
         break;
-      case 5:
+      case 7:
         Navigator.of(context).push(MaterialPageRoute(
           builder: (context) => const ReportsPage(),
         ));

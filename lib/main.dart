@@ -26,7 +26,7 @@ class IconFont extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Image.asset('assets/images/arc-logo.png');
+    return  Image.asset('assets/images/WRC_logo_logotype-700x281.png', width: 300, height: 100,);
   }
 }
 
@@ -45,7 +45,7 @@ class SplashScreen extends StatelessWidget {
     });
     return Scaffold(
       body: Container(
-        color: Colors.black,
+        color: Colors.black26,
         alignment: Alignment.center,
         child: IconFont()
         ),

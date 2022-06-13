@@ -234,7 +234,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                         SizedBox(
                           height: 200,
                           child: Image.asset(
-                            'assets/images/arc-logo.png',
+                            'assets/images/2022-Badge.png',
                             fit: BoxFit.contain,
                           ),
                         ),
