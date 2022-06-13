@@ -232,7 +232,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
 
                       children: <Widget> [
                         SizedBox(
-                          height: 200,
+                          height: 100,
                           child: Image.asset(
                             'assets/images/2022-Badge.png',
                             fit: BoxFit.contain,

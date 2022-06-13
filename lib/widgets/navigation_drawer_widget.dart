@@ -25,14 +25,14 @@ class _NavigationDrawerWidgetState extends State<NavigationDrawerWidget> {
           color: Colors.blue,
           child: ListView(
             children: <Widget>[
-              const SizedBox(height: 10),
+              const SizedBox(height: 5),
               buildMenuItem(
                 text: 'Rally Schedule',
                 icon: Icons.schedule,
                 onClicked: () =>selectedItem(context, 0),
               ),
 
-              const SizedBox(height: 24),
+              const SizedBox(height: 20),
               const Divider(color: Colors.white),
 
               const SizedBox(height: 10),
@@ -49,7 +49,7 @@ class _NavigationDrawerWidgetState extends State<NavigationDrawerWidget> {
                 onClicked: () =>selectedItem(context, 2),
               ),
 
-              const SizedBox(height: 24),
+              const SizedBox(height: 30),
               const Divider(color: Colors.white),
 
               const SizedBox(height: 10),
@@ -80,10 +80,9 @@ class _NavigationDrawerWidgetState extends State<NavigationDrawerWidget> {
                 onClicked: () =>selectedItem(context, 6),
               ),
 
-              const SizedBox(height: 24),
+              const SizedBox(height: 30),
               const Divider(color: Colors.white),
 
-              const SizedBox(height: 10),
               buildMenuItem(
                 text: 'Reports',
                 icon: Icons.summarize,

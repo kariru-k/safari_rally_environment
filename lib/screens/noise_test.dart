@@ -161,6 +161,12 @@ class _NoisePageState extends State<NoisePage> {
       ),
       value: _rallyCategory,
       items: dropdownItems,
+      validator: (value) {
+        if (value == null) {
+          return 'Please select a rally category';
+        }
+        return null;
+      },
       onChanged: (String? value) {
         setState(() {
           _rallyCategory = value;
@@ -271,8 +277,18 @@ class _NoisePageState extends State<NoisePage> {
           child: Column(
             children: <Widget>[
               SizedBox(
-                height: 200,
+                height: 90,
                 child: Image.asset('assets/images/2022-Badge.png'),
+              ),
+              const SizedBox(
+                height: 20,
+                child: Text(
+                  'Noise Test Form',
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
               ),
               _buildCarNumberField(),
               const SizedBox(height: 20),

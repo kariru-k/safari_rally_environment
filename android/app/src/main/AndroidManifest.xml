@@ -8,8 +8,8 @@
 
 
    <application
-        android:label="Environment"
-        android:icon="@mipmap/arc_logo">
+        android:label="Safari Rally Environment"
+        android:icon="@mipmap/safari2022_badge">
         <activity
             android:name=".MainActivity"
             android:exported="true"
