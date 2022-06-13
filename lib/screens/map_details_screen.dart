@@ -1,16 +1,13 @@
+// ignore_for_file: use_key_in_widget_constructors
+
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:location/location.dart';
-
 import '../models/locations.dart';
 
 class MapDetailsScreen extends StatelessWidget {
   final Locations location;
 
   MapDetailsScreen(this.location);
-
-  late GoogleMapController _controller;
-  Location _location = Location();
 
   late final startPos = LatLng(location.startLat, location.startLng);
   late final checkPoint1Pos = LatLng(location.checkpoint1Lat, location.checkpoint1Lng);
@@ -19,15 +16,15 @@ class MapDetailsScreen extends StatelessWidget {
   late final finishPos = LatLng(location.finishLat, location.finishLng);
 
   late final Marker _startPos = Marker(
-    markerId: MarkerId('_startPos'),
-    infoWindow: InfoWindow(title: "Start"),
+    markerId: const MarkerId('_startPos'),
+    infoWindow: const InfoWindow(title: "Start"),
     icon: BitmapDescriptor.defaultMarker,
     position: startPos
   );
 
   late final Marker _finishPos = Marker(
-      markerId: MarkerId('_finishPos'),
-      infoWindow: InfoWindow(title: "Finish"),
+      markerId: const MarkerId('_finishPos'),
+      infoWindow: const InfoWindow(title: "Finish"),
       icon: BitmapDescriptor.defaultMarker,
       position: finishPos
   );
