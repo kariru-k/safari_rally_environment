@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import '../screens/deployment_page.dart';
 import '../screens/litter_marking.dart';
 import '../screens/maps_page.dart';
+import '../screens/marshall_resource_confirmation.dart';
+import '../screens/marshall_stage_reviewPage.dart';
 import '../screens/noise_test.dart';
 import '../screens/reports.dart';
 import '../screens/schedule_page.dart';
@@ -22,7 +24,7 @@ class _NavigationDrawerWidgetState extends State<NavigationDrawerWidget> {
   Widget build(BuildContext context) {
     return Drawer(
         child: Material(
-          color: Colors.blue,
+          color: Colors.greenAccent,
           child: ListView(
             children: <Widget>[
               const SizedBox(height: 5),
@@ -61,7 +63,7 @@ class _NavigationDrawerWidgetState extends State<NavigationDrawerWidget> {
 
               const SizedBox(height: 10),
               buildMenuItem(
-                text: 'Marshall Resource Confirmation Form',
+                text: 'Marshall Stage Resource Confirmation Form',
                 icon: Icons.category,
                 onClicked: () =>selectedItem(context, 4),
               ),
@@ -135,6 +137,16 @@ class _NavigationDrawerWidgetState extends State<NavigationDrawerWidget> {
       case 3:
         Navigator.of(context).push(MaterialPageRoute(
           builder: (context) => const DeploymentConfirmationPage(),
+        ));
+        break;
+      case 4:
+        Navigator.of(context).push(MaterialPageRoute(
+          builder: (context) => const MarshallResourceConfirmationPage(),
+        ));
+        break;
+      case 5:
+        Navigator.of(context).push(MaterialPageRoute(
+          builder: (context) => const MarshallStageReviewPage(),
         ));
         break;
       case 6:

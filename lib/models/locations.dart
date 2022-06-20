@@ -1,35 +1,49 @@
 
 
 class Locations {
-  String title;
-  double startLat;
-  double startLng;
-  double checkpoint1Lat;
-  double checkpoint1Lng;
-  double checkpoint2Lat;
-  double checkpoint2Lng;
-  double checkpoint3Lat;
-  double checkpoint3Lng;
-  double finishLat;
-  double finishLng;
+  String? title;
+  double? startLat;
+  double? startLng;
+  double? checkpoint1Lat;
+  double? checkpoint1Lng;
+  double? checkpoint2Lat;
+  double? checkpoint2Lng;
+  double? checkpoint3Lat;
+  double? checkpoint3Lng;
+  double? finishLat;
+  double? finishLng;
 
   Locations({
-    required this.title,
-    required this.startLat,
-    required this.startLng,
-    required this.checkpoint1Lat,
-    required this.checkpoint1Lng,
-    required this.checkpoint2Lat,
-    required this.checkpoint2Lng,
-    required this.checkpoint3Lat,
-    required this.checkpoint3Lng,
-    required this.finishLat,
-    required this.finishLng,
+    this.title,
+    this.startLat,
+    this.startLng,
+    this.checkpoint1Lat,
+    this.checkpoint1Lng,
+    this.checkpoint2Lat,
+    this.checkpoint2Lng,
+    this.checkpoint3Lat,
+    this.checkpoint3Lng,
+    this.finishLat,
+    this.finishLng,
   });
 
 }
 
 List<Locations> locations = [
+  Locations(
+      title: "Service Park",
+      startLat: -0.742143,
+      startLng: 36.450641,
+      checkpoint1Lat: -0.742143,
+      checkpoint1Lng: 36.450641,
+      checkpoint2Lat: -0.742143,
+      checkpoint2Lng: 36.450641,
+      checkpoint3Lat: -0.742143,
+      checkpoint3Lng: 36.450641,
+      finishLat: -0.742143,
+      finishLng: 36.450641
+  ),
+
   Locations(
     title: "Kasarani",
     startLat: -1.230524,
@@ -42,6 +56,19 @@ List<Locations> locations = [
     checkpoint3Lng: 36.912754,
     finishLat: -1.231586,
     finishLng: 36.9095,
+  ),
+  Locations(
+    title: "Shakedown",
+    startLat: -0.691092,
+    startLng: 36.304493,
+    checkpoint1Lat: -0.680879,
+    checkpoint1Lng: 36.298056,
+    checkpoint2Lat: -0.6732830,
+    checkpoint2Lng: 36.276512,
+    checkpoint3Lat: -0.683454,
+    checkpoint3Lng: 36.2844044,
+    finishLat: -0.694611,
+    finishLng: 36.302004,
   ),
   Locations(
     title: "Loldia",

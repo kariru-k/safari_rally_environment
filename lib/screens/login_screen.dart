@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:safari_rally/screens/home_screen.dart';
 import 'package:safari_rally/screens/registration_screen.dart';
+import 'package:safari_rally/utils/colors.dart';
 
 
 class LoginScreen extends StatefulWidget {
@@ -10,10 +11,10 @@ class LoginScreen extends StatefulWidget {
 
 
   @override
-  _LoginScreenState createState() => _LoginScreenState();
+  LoginScreenState createState() => LoginScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class LoginScreenState extends State<LoginScreen> {
 
   // Form Keys
   final _formKey = GlobalKey<FormState>();
@@ -124,26 +125,34 @@ class _LoginScreenState extends State<LoginScreen> {
     return Scaffold(
       backgroundColor: Colors.black,
 
-      body: Center(
+      body: Container(
+        width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.height,
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+              hexColor("FFFF00"),
+              hexColor("FFFFFF"),
+              hexColor("00FF00"),
+            ], begin: Alignment.topCenter, end: Alignment.bottomCenter,
+          ),
+        ),
         child: SingleChildScrollView(
-          child: Container(
-            color: Colors.white,
-            alignment: Alignment.center,
-              child: Form(
+          child: Padding(
+            padding: EdgeInsets.fromLTRB(20, MediaQuery.of(context).size.height * 0.2, 20, 0),
+            child: Form(
               key: _formKey,
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
 
                 children: <Widget> [
                   SizedBox(
-                    height: 100,
+                    height: 120,
                     child: Image.asset(
                         'assets/images/2022-Badge.png',
                         fit: BoxFit.contain,
                     ),
                   ),
-                  const SizedBox(height: 45),
+                  const SizedBox(height: 25),
                   emailField,
                   const SizedBox(height: 25),
                   passwordField,
@@ -173,10 +182,10 @@ class _LoginScreenState extends State<LoginScreen> {
                     .toList(),
               ),
               )
-            )
-          )
+          ),
         ),
-      );
+      ),
+    );
   }
   // login function
   void signIn(String email, String password) async {

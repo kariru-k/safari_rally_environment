@@ -35,28 +35,58 @@ class _NoisePageState extends State<NoisePage> {
 
   List<DropdownMenuItem<String>> get dropdownItems{
     List<DropdownMenuItem<String>> menuItems = [
-      const DropdownMenuItem(child: Text("RC1 Rally1"),value: "RC1 Rally1"),
-      const DropdownMenuItem(child: Text("RC2 Rally2"),value: "RC2 Rally2"),
-      const DropdownMenuItem(child: Text("RC3 Rally 3"),value: "RC3 Rally 3"),
-      const DropdownMenuItem(child: Text("NAT NR4"),value: "NAT NR4"),
-      const DropdownMenuItem(child: Text("NAT N4"),value: "NAT N4"),
-      const DropdownMenuItem(child: Text("NAT NR2"),value: "NAT NR2"),
+      const DropdownMenuItem(value: "RC1 Rally1", child: Text("RC1 Rally1")),
+      const DropdownMenuItem(value: "RC2 Rally2", child: Text("RC2 Rally2")),
+      const DropdownMenuItem(value: "RC3 Rally 3", child: Text("RC3 Rally 3")),
+      const DropdownMenuItem(value: "NAT NR4", child: Text("NAT NR4")),
+      const DropdownMenuItem(value: "NAT N4", child: Text("NAT N4")),
+      const DropdownMenuItem(value: "NAT NR2", child: Text("NAT NR2")),
     ];
     return menuItems;
   }
 
-  late String? _carNumber;
+  late int _carNumber;
   late String? _driverName;
   late String? _coDriverName;
   late String? _carMake;
   late String? _carModel;
   String? _rallyCategory;
-  late String? _test1Value;
-  late String? _test2Value;
-  late String? _test3Value;
+  late double? _test1Value;
+  late double? _test2Value;
+  late double? _test3Value;
 
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
+  _checksoundtest1compliance(value){
+    if(value > 108.0){
+      return "Non-Compliant to the sound limit";
+    }
+    else{
+      return "Compliant to the sound limit";
+    }
+
+  }
+
+  _checksoundtest2compliance(value){
+    if(value > 96.0){
+      return "Non-Compliant to the sound limit";
+    }
+    else{
+      return "Compliant to the sound limit";
+    }
+
+  }
+
+  _checksoundtest3compliance(value){
+    if(value > 84.0){
+      return "Non-Compliant to the sound limit";
+    }
+    else{
+      return "Compliant to the sound limit";
+    }
+
+  }
 
   Widget _buildCarNumberField() {
     return TextFormField(
@@ -69,11 +99,13 @@ class _NoisePageState extends State<NoisePage> {
         if (value!.isEmpty) {
           return 'Please enter the rally car number';
         }
+        //checks if value is an integer. If it isn't it sends an error message
+        if (int.tryParse(value) == null) {
+          return 'Please enter a valid car number';
+        }
         return null;
       },
-      onSaved: (value) {
-        _carNumber = value;
-      },
+      onSaved: (value) => _carNumber = int.parse(value!),
     );
   }
 
@@ -88,6 +120,7 @@ class _NoisePageState extends State<NoisePage> {
         if (value!.isEmpty) {
           return "Please enter the Driver's Name";
         }
+        //checks if value is an integer. If it isn't it sends an error message
         return null;
       },
       onSaved: (value) {
@@ -186,10 +219,14 @@ class _NoisePageState extends State<NoisePage> {
         if (value!.isEmpty) {
           return 'Please enter the value for Sound Test 1';
         }
+        //checks if value is a double. If it isn't it sends an error message
+        if (double.tryParse(value) == null) {
+          return 'Please enter a valid value for Sound Test 1. Remember to use a decimal point.';
+        }
         return null;
       },
       onSaved: (value) {
-        _test1Value = value;
+        _test1Value = double.parse(value!);
       },
     );
   }
@@ -205,10 +242,14 @@ class _NoisePageState extends State<NoisePage> {
         if (value!.isEmpty) {
           return 'Please enter the value for Sound Test 2';
         }
+        //checks if value is a double. If it isn't it sends an error message
+        if (double.tryParse(value) == null) {
+          return 'Please enter a valid value for Sound Test 2. Remember to use a decimal point.';
+        }
         return null;
       },
       onSaved: (value) {
-        _test2Value = value;
+        _test2Value = double.parse(value!);
       },
     );
   }
@@ -224,10 +265,14 @@ class _NoisePageState extends State<NoisePage> {
         if (value!.isEmpty) {
           return 'Please enter the value for Sound Test 3';
         }
+        //checks if value is a double. If it isn't it sends an error message
+        if (double.tryParse(value) == null) {
+          return 'Please enter a valid value for Sound Test 3. Remember to use a decimal point.';
+        }
         return null;
       },
       onSaved: (value) {
-        _test3Value = value;
+        _test3Value = double.parse(value!);
       },
     );
   }
@@ -239,15 +284,18 @@ class _NoisePageState extends State<NoisePage> {
         if (_formKey.currentState!.validate()) {
           _formKey.currentState!.save();
           FirebaseFirestore.instance.collection('noisetestdata').add({
-            'carNumber': _carNumber,
-            'driverName': _driverName,
-            'coDriverName': _coDriverName,
-            'carMake': _carMake,
-            'carModel': _carModel,
-            'rallyCategory': _rallyCategory,
-            'test1': _test1Value,
-            'test2': _test2Value,
-            'test3': _test3Value,
+            'Car Number': _carNumber,
+            'Driver Name': _driverName,
+            'Co-Driver Name': _coDriverName,
+            'Car Make': _carMake,
+            'Car Model': _carModel,
+            'Rally Category': _rallyCategory,
+            'Sound Test 1': _test1Value,
+            'Sound Test 1 Compliance': _checksoundtest1compliance(_test1Value),
+            'Sound Test 2 (2m)': _test2Value,
+            'Sound Test 2 Compliance': _checksoundtest2compliance(_test2Value),
+            'Sound Test 3 (5m)': _test3Value,
+            'Sound Test 3 Compliance': _checksoundtest3compliance(_test3Value),
             'timestamp': DateTime.now(),
             'submitted by': '${loggedInUser.firstName} ${loggedInUser.secondName}',
           });
@@ -259,6 +307,8 @@ class _NoisePageState extends State<NoisePage> {
           MaterialPageRoute(builder: (context) =>  const HomeScreen()),
           (route) => false);
 
+        } else {
+          Fluttertoast.showToast(msg: "Please check your values. They are not valid.");
         }
       },
     );

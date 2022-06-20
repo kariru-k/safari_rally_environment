@@ -21,11 +21,11 @@ class LitterMapsPage extends StatelessWidget {
               Locations location = locations[index];
               return Card(
                 child: ListTile(
-                  title: Text(location.title),
+                  title: Text(location.title.toString()),
                   onTap: () {
                     Navigator.push(context,
                         MaterialPageRoute(
-                            builder: (context) => MapDetailsScreen(location))
+                            builder: (context) => LitterMapDetailsScreen(location))
                     );
                   },
                 ),

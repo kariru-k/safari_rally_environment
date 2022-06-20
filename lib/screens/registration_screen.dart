@@ -7,14 +7,16 @@ import 'package:safari_rally/screens/home_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
+import '../utils/colors.dart';
+
 class RegistrationScreen extends StatefulWidget {
   const RegistrationScreen({Key? key}) : super(key: key);
 
   @override
-  _RegistrationScreenState createState() => _RegistrationScreenState();
+  RegistrationScreenState createState() => RegistrationScreenState();
 }
 
-class _RegistrationScreenState extends State<RegistrationScreen> {
+class RegistrationScreenState extends State<RegistrationScreen> {
   final _auth = FirebaseAuth.instance;
 
   String? errorMessage;
@@ -209,55 +211,58 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
 
     return Scaffold(
       backgroundColor: Colors.black,
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.red),
-          onPressed: () {
-            Navigator.of((context)).pop();
-          },
-        )
-      ),
-      body: Center(
-          child: SingleChildScrollView(
-              child: Container(
-                  color: Colors.white,
-                  alignment: Alignment.center,
-                  child: Form(
-                    key: _formKey,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
 
-                      children: <Widget> [
-                        SizedBox(
-                          height: 100,
-                          child: Image.asset(
-                            'assets/images/2022-Badge.png',
-                            fit: BoxFit.contain,
-                          ),
+      body: Container(
+        width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.height,
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+              hexColor("FFFF00"),
+              hexColor("FFFFFF"),
+              hexColor("00FF00"),
+            ], begin: Alignment.topCenter, end: Alignment.bottomCenter,
+          ),
+        ),
+        child: SingleChildScrollView(
+          child: Padding(
+              padding: EdgeInsets.fromLTRB(20, MediaQuery.of(context).size.height * 0.1, 20, 0),
+              child: Form(
+                key: _formKey,
+                child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+
+                    children: <Widget> [
+                      SizedBox(
+                        height: 120,
+                        child: Image.asset(
+                          'assets/images/2022-Badge.png',
+                          fit: BoxFit.contain,
                         ),
-                        const SizedBox(height: 25),
-                        firstNameField,
-                        const SizedBox(height: 25),
-                        lastNameField,
-                        const SizedBox(height: 25),
-                        emailField,
-                        const SizedBox(height: 25),
-                        passwordField,
-                        const SizedBox(height: 25),
-                        confirmPasswordField,
-                        const SizedBox(height: 25),
-                        signUpButton
+                      ),
+                      const SizedBox(height: 25),
+                      firstNameField,
+                      const SizedBox(height: 25),
+                      lastNameField,
+                      const SizedBox(height: 25),
+                      emailField,
+                      const SizedBox(height: 25),
+                      passwordField,
+                      const SizedBox(height: 25),
+                      confirmPasswordField,
+                      const SizedBox(height: 25),
+                      signUpButton
 
-                      ]
-                    ),
-                  )
+                    ]
+                ),
               )
-          )
+          ),
+        ),
       ),
     );
+
+
   }
   void signUp(String email, String password) async {
     if (_formKey.currentState!.validate()) {

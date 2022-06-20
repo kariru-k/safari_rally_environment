@@ -13,10 +13,10 @@ class HomeScreen extends StatefulWidget {
 
 
   @override
-  _HomeScreenState createState() => _HomeScreenState();
+  HomeScreenState createState() => HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class HomeScreenState extends State<HomeScreen> {
   User? user = FirebaseAuth.instance.currentUser;
   UserModel loggedInUser = UserModel();
 
@@ -39,16 +39,15 @@ class _HomeScreenState extends State<HomeScreen> {
 
 
     return Scaffold(
-      drawer: NavigationDrawerWidget(),
+      drawer: const NavigationDrawerWidget(),
       appBar: AppBar(
-
+        backgroundColor: Colors.lime,
         title:  Text(
             'Welcome ${loggedInUser.firstName}.',
             style: const TextStyle(
               fontSize: 15,
               fontWeight: FontWeight.bold,
             ),
-
         ),
       ),
     );
